@@ -10,6 +10,9 @@ export const getAllUsersAsync = async () => {
 export const getUserByIdAsync = async (userId) => {
   return await User.findById(userId);
 };
+export const getUserByEmailAsync = async (email) => {
+  return await User.findOne({ email });
+};
 export const updateUserAsync = async (userId, updatedData) => {
   return await User.findByIdAndUpdate(userId, updatedData, { new: true });
 };
