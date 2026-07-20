@@ -4,12 +4,13 @@ import express from 'express';
 import connectDB from './Data/mongoConnect.js';
 import errorHandler from './Middleware/errorHandler.js';
 import authRoutes from './Routes/authRoutes.js';
+import ticketRoutes from './Routes/ticketRoutes.js';
 const app = express();
 app.use(express.json());
 
 await connectDB();
 app.use('/api/auth', authRoutes);
-
+app.use('/api/tickets', ticketRoutes);
 
 
 
