@@ -6,6 +6,7 @@ import errorHandler from './Middleware/errorHandler.js';
 import authRoutes from './Routes/authRoutes.js';
 import ticketRoutes from './Routes/ticketRoutes.js';
 import userRoutes from './Routes/userRoutes.js';
+import commentRoutes from './Routes/commentRoutes.js';
 
 const app = express();
 app.use(express.json());
@@ -14,7 +15,7 @@ await connectDB();
 app.use('/api/auth', authRoutes);
 app.use('/api/tickets', ticketRoutes);
 app.use('/api/users', userRoutes);
-
+app.use('/api/comments', commentRoutes)
 
 app.use((req, res, next) => {
   res.status(404).json({ success: false, message: "Route not found" });

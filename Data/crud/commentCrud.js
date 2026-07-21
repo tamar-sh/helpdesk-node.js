@@ -4,9 +4,10 @@ export const createCommentAsync = async (commentData) => {
   const comment = new Comment(commentData);
   return await comment.save();
 };
-export const getAllCommentsAsync = async () => {
-  return await Comment.find();
+export const getAllCommentsAsync = async (filter = {}) => {
+  return await Comment.find(filter);
 };
+
 export const getCommentByIdAsync = async (commentId) => {
   return await Comment.findById(commentId);
 };

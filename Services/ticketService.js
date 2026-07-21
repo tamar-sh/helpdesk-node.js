@@ -25,19 +25,24 @@ export const getAllTickets = async (user) => {
     return await getAllTicketsAsync(filter);
 };
 
-export const getTicketById = async (ticketId, user) => {
- const ticket = await getTicketByIdAsync(ticketId);
- if (!ticket) {
-     throw new AppError('Ticket not found', 404);
- }
- if (user.role === 'employee' && ticket.employee.toString() !== user.id) {
-     throw new AppError('You do not have permission to view this ticket', 403);
- }
- if (user.role === 'technician' && (!ticket.technician || ticket.technician.toString() !== user.id)) {
-        throw new AppError('You do not have permission to view this ticket', 403);
- }
- return ticket;
+export const assertTicketAccess = (ticket, user) => {
+  if (user.role === 'employee' && ticket.employee.toString() !== user.id) {
+    throw new AppError('You do not have permission to access this ticket', 403);
+  }
+  if (user.role === 'technician' && (!ticket.technician || ticket.technician.toString() !== user.id)) {
+    throw new AppError('You do not have permission to access this ticket', 403);
+  }
 };
+
+export const getTicketById = async (ticketId, user) => {
+  const ticket = await getTicketByIdAsync(ticketId);
+  if (!ticket) {
+    throw new AppError('Ticket not found', 404);
+  }
+  assertTicketAccess(ticket, user);
+  return ticket;
+};
+
 
 export const assignTicket = async (ticketId, technicianId) => {
     const ticket = await getTicketByIdAsync(ticketId);
