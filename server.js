@@ -5,13 +5,15 @@ import connectDB from './Data/mongoConnect.js';
 import errorHandler from './Middleware/errorHandler.js';
 import authRoutes from './Routes/authRoutes.js';
 import ticketRoutes from './Routes/ticketRoutes.js';
+import userRoutes from './Routes/userRoutes.js';
+
 const app = express();
 app.use(express.json());
 
 await connectDB();
 app.use('/api/auth', authRoutes);
 app.use('/api/tickets', ticketRoutes);
-
+app.use('/api/users', userRoutes);
 
 
 app.use((req, res, next) => {
