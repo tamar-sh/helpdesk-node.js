@@ -85,3 +85,25 @@ export const updateTicketStatus = async (ticketId, status, user) => {
 
     return updatedTicket;
 };
+
+export const addAttachments = async (ticketId, files, user) => {
+    const ticket = await getTicketByIdAsync(ticketId);
+    if (!ticket) {
+        throw new AppError('Ticket not found', 404);
+    }
+    assertTicketAccess(ticket, user);
+
+    const newPaths = files.map(file => file.path);
+    const updatedTicket = await updateTicketAsync(ticketId, {
+        attachments: [...ticket.attachments, ...newPaths]
+    });
+
+    const recipients = [ticket.employee, ticket.technician].filter(
+        (id) => id && id.toString() !== user.id
+    );
+    for (const recipientId of recipients) {
+        await sendNotification(recipientId, `New file added to ticket "${ticket.title}"`, ticketId);
+    }
+
+    return updatedTicket;
+};

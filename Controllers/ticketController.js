@@ -1,4 +1,4 @@
-import {createTicket, getAllTickets, getTicketById,assignTicket,updateTicketStatus} from '../Services/ticketService.js';
+import {createTicket, getAllTickets, getTicketById,assignTicket,updateTicketStatus,addAttachments} from '../Services/ticketService.js';
 import asyncHandler from '../Middleware/asyncHandler.js';
 
 export const createTicketController = asyncHandler(async (req, res, next) => {
@@ -29,5 +29,11 @@ export const updateTicketStatusController = asyncHandler(async (req, res, next) 
     const ticketId = req.params.id;
     const status = req.body.status;
     const updatedTicket = await updateTicketStatus(ticketId, status, req.user);
+    res.status(200).json({ success: true, data: updatedTicket });
+});
+
+export const addAttachmentsController = asyncHandler(async (req, res, next) => {
+    const ticketId = req.params.id;
+    const updatedTicket = await addAttachments(ticketId, req.files, req.user);
     res.status(200).json({ success: true, data: updatedTicket });
 });
