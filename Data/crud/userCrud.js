@@ -4,8 +4,8 @@ export const createUserAsync = async (userData) => {
   const user = new User(userData);
   return await user.save();
 };
-export const getAllUsersAsync = async () => {
-  return await User.find();
+export const getAllUsersAsync = async (filter = {}) => {
+  return await User.find(filter);
 };
 export const getUserByIdAsync = async (userId) => {
   return await User.findById(userId);

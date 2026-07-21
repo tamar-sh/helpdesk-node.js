@@ -3,7 +3,7 @@ import asyncHandler from '../Middleware/asyncHandler.js';
 
 export const createTicketController = asyncHandler(async (req, res, next) => {
     const employeeId = req.user.id; 
-    const ticket = await createTicket(req.body, employeeId);
+    const ticket = await createTicket(req.body, employeeId, req.files);
     res.status(201).json({ success: true, data: ticket });
 });
 

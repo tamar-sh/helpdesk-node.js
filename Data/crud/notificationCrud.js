@@ -4,8 +4,8 @@ export const createNotificationAsync = async (notificationData) => {
   const notification = new Notification(notificationData);
   return await notification.save();
 };
-export const getAllNotificationsAsync = async () => {
-  return await Notification.find();
+export const getAllNotificationsAsync = async (filter = {}) => {
+  return await Notification.find(filter);
 };
 export const getNotificationByIdAsync = async (notificationId) => {
   return await Notification.findById(notificationId);

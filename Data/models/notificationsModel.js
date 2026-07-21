@@ -10,6 +10,10 @@ const notificationSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  ticket: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Ticket"
+  },
   isRead: {
     type: Boolean,
     default: false
