@@ -1,0 +1,428 @@
+/* Layout */
+.page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px 16px 64px;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  background: var(--card-bg);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.navbar-brand a {
+  font-weight: 700;
+  font-size: 20px;
+  text-decoration: none;
+  color: var(--text-h);
+}
+
+.navbar-links {
+  display: flex;
+  gap: 16px;
+}
+
+.navbar-links a {
+  text-decoration: none;
+  color: var(--text);
+}
+
+.navbar-links a:hover {
+  color: var(--accent);
+}
+
+.navbar-user {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-name {
+  font-size: 14px;
+  color: var(--text);
+}
+
+.navbar-user button {
+  border: 1px solid var(--border);
+  background: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+}
+
+.navbar-user button:hover {
+  background: var(--bg);
+}
+
+/* Auth pages */
+.auth-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+}
+
+.auth-form,
+.ticket-form,
+.user-form {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 32px;
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.ticket-form,
+.user-form {
+  max-width: 100%;
+  margin-bottom: 24px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-h);
+}
+
+input,
+select,
+textarea {
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font: inherit;
+  background: #fff;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+button[type='submit'],
+.button {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+button[type='submit']:hover,
+.button:hover {
+  background: var(--accent-hover);
+}
+
+button[type='submit']:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.error-message {
+  background: rgba(224, 69, 95, 0.1);
+  color: var(--danger);
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+/* Dashboard */
+.stat-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.stat-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.stat-number {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.stat-label {
+  font-size: 13px;
+  color: var(--text);
+}
+
+.dashboard-actions {
+  display: flex;
+  gap: 12px;
+}
+
+/* Ticket list */
+.filters {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.filters input,
+.filters select {
+  flex: 1;
+  min-width: 160px;
+}
+
+.ticket-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ticket-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.ticket-card:hover {
+  border-color: var(--accent);
+}
+
+.ticket-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.ticket-card-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--text);
+}
+
+/* Badges */
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  background: var(--border);
+}
+
+.priority-Low { background: #e6f4ea; color: #1e7a3d; }
+.priority-Medium { background: #fff4e0; color: #a06400; }
+.priority-High { background: #ffe6df; color: #c23f1a; }
+.priority-Critical { background: #ffe0e6; color: #c2185b; }
+
+.status-Open { background: #e0edff; color: #1a56c2; }
+.status-InProgress { background: #fff4e0; color: #a06400; }
+.status-WaitingforEmployee { background: #f3e0ff; color: #7a1ac2; }
+.status-Resolved { background: #e6f4ea; color: #1e7a3d; }
+.status-Closed { background: #eee; color: #555; }
+
+/* Ticket detail */
+.ticket-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ticket-info,
+.ticket-attachments,
+.ticket-assign,
+.ticket-status-change,
+.ticket-chat {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  margin-top: 16px;
+}
+
+.ticket-info p {
+  margin: 6px 0;
+}
+
+.inline-form {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.inline-form input,
+.inline-form select {
+  flex: 1;
+  min-width: 160px;
+}
+
+.inline-form button {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+}
+
+/* Chat */
+.messages-list {
+  max-height: 320px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.message {
+  background: var(--bg);
+  border-radius: 10px;
+  padding: 8px 12px;
+  align-self: flex-start;
+  max-width: 75%;
+}
+
+.message.own {
+  align-self: flex-end;
+  background: rgba(109, 59, 255, 0.12);
+}
+
+.message .time {
+  display: block;
+  font-size: 11px;
+  color: #999;
+  margin-top: 4px;
+}
+
+/* Notifications */
+.notification-bell {
+  position: relative;
+}
+
+.bell-button {
+  background: none;
+  border: none;
+  font-size: 18px;
+  position: relative;
+}
+
+.badge.bell-count,
+.notification-bell .badge {
+  position: absolute;
+  top: -6px;
+  left: -8px;
+  background: var(--danger);
+  color: #fff;
+  font-size: 10px;
+  padding: 1px 6px;
+}
+
+.notification-dropdown {
+  position: absolute;
+  top: 32px;
+  left: 0;
+  width: 300px;
+  max-height: 360px;
+  overflow-y: auto;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  padding: 8px;
+}
+
+.notification-item {
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.notification-item.unread {
+  background: rgba(109, 59, 255, 0.08);
+  font-weight: 600;
+}
+
+.notification-item:hover {
+  background: var(--bg);
+}
+
+.notification-item .time {
+  display: block;
+  font-size: 11px;
+  color: #999;
+  margin-top: 4px;
+}
+
+.notification-dropdown .empty {
+  padding: 12px;
+  text-align: center;
+  color: #999;
+}
+
+/* Users table */
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.users-table th,
+.users-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+  text-align: right;
+  font-size: 14px;
+}
+
+.users-table th {
+  background: var(--bg);
+}
+
+.users-table button {
+  border: 1px solid var(--border);
+  background: none;
+  border-radius: 6px;
+  padding: 4px 10px;
+  margin-inline-end: 6px;
+  font-size: 12px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+}

@@ -1,0 +1,39 @@
+:root {
+  --text: #3f3d45;
+  --text-h: #08060d;
+  --bg: #f7f7fb;
+  --card-bg: #fff;
+  --border: #e5e4e7;
+  --accent: #6d3bff;
+  --accent-hover: #5827e0;
+  --danger: #e0455f;
+  --success: #2fa66a;
+
+  font: 15px/145% system-ui, 'Segoe UI', Roboto, sans-serif;
+  color-scheme: light;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+h1, h2, h3 {
+  color: var(--text-h);
+  font-weight: 600;
+}
+
+button {
+  cursor: pointer;
+  font: inherit;
+}
+
+a {
+  color: var(--accent);
+}
